@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 
 //Endpoints
 app.post('/api/hostgame', controller.hostGame)
+app.post('/api/joingame', controller.joinGame)
 
 
 //
