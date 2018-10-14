@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import {createRoom} from '../../ducks/reducer'
+import {connect} from 'react-redux'
 
 class HostGame extends Component {
     constructor(){
@@ -18,11 +20,20 @@ class HostGame extends Component {
     }
 
     createGame(id){
-        axios.post('/api/hostgame', {roomId:this.state.roomId}).then(res => {
-            this.setState({
-                toHost: true
+        if(id){
+            axios.post('/api/hostgame', {roomId:id}).then(res => {
+                if(res.data === 'room exists'){
+                    alert('Oops! Room already taken!')
+                } else {
+                    this.props.createRoom(this.state.roomId)
+                    this.setState({
+                        toHost: true
+                    })
+                }
             })
-        })
+        } else {
+            alert('Enter an ID, ya bumkin')
+        }
     }
 
     render(){
@@ -33,9 +44,9 @@ class HostGame extends Component {
                 <h2>Enter Room ID</h2>
                 <input onChange={(e)=>this.handleInput(e.target.value)} placeholder="Room ID..." />
                 <button onClick={()=>this.createGame(this.state.roomId)}>Create Game</button>
-                {this.state.toHost ? <Redirect to="/host"/> : ''}
+                {this.state.toHost ? <Redirect to="/hosting"/> : ''}
             </div>
         )
     }
 }
-export default HostGame
+export default connect(null,{createRoom})(HostGame)
