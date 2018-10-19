@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 //Endpoints
 app.post('/api/hostgame', controller.hostGame)
 app.post('/api/joingame', controller.joinGame)
+app.get('/api/getplayers/:roomId', controller.getPlayers)
 
 
 
@@ -37,6 +38,15 @@ io.on('connection', socket => {
 
     socket.on('disconnect', socket => {
         console.log('player disconnected')
+    })
+
+    socket.on('join-room', data => {
+        socket.join(data.roomId)
+        console.log('i joined a room')
+    })
+
+    socket.on('player-joined', data => {
+        io.in(data.roomId).emit('add-player')
     })
 })
 

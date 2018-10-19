@@ -7,7 +7,7 @@ class WelcomeUser extends Component {
     render(){
         return(
             <div>
-                <h1>WelcomeUser</h1>
+                <h1>Abducted</h1>
                 <div className="welcomeuser-content">
                     <div>
                         <Link to="/host"><button>Host Game</button></Link>

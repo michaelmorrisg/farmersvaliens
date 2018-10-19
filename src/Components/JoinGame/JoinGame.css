@@ -2,18 +2,39 @@
     margin: 0px auto;
     display: flex;
     justify-content: center;
-    width: 20%;
+    width: 100%;
     height: 200px;
+    position: relative;
 }
 .alien-head {
     position: relative;
     width: 100%;
-    height: 100%;
+    max-width: 210px;
+    height: 80%;
+    top: 20%;
     background-color: greenyellow;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     border-top-left-radius: 25%;
     border-top-right-radius: 25%;
+}
+.antenna-top-left {
+    width: 10px;
+    height: 45px;
+    background-color: greenyellow;
+    position: absolute;
+    top: 0;
+    left: 45%;
+    transform: rotate(-25deg);
+}
+.antenna-top-right {
+    width: 10px;
+    height: 45px;
+    background-color: greenyellow;
+    position: absolute;
+    top: 0;
+    right: 45%;
+    transform: rotate(25deg);
 }
 .left-eye {
     position: absolute;
@@ -24,9 +45,6 @@
     margin: 0px auto;
     top: 30%;
     left: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .right-eye {
     position: absolute;
@@ -37,9 +55,6 @@
     margin: 0px auto;
     top: 30%;
     right: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .left-pupil {
     background-color: white;
@@ -47,8 +62,8 @@
     width: 5px;
     border-radius: 50%;
     position: absolute;
-    /* top: 40%;
-    left: 30%; */
+    top: 40%;
+    left: 45%;
     transition: .2s;
     
 }
@@ -58,8 +73,8 @@
     width: 4px;
     border-radius: 50%;
     position: absolute;
-    /* top: 40%;
-    left: 30%; */
+    top: 40%;
+    left: 30%;
     transition: .2s;
 }
 #looking-left {

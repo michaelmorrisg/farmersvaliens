@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import io from 'socket.io-client'
 import './JoinGame.css'
+import {Redirect} from 'react-router-dom'
 
 const socket = io.connect("http://localhost:3020")
 
@@ -11,7 +12,9 @@ class JoinGame extends Component {
         this.state = {
             username: '',
             roomId: '',
-            eyes: 0
+            eyes: 0,
+            activeEyes: false,
+            toWaiting: false
         }
     }
 
@@ -33,7 +36,10 @@ class JoinGame extends Component {
             if(res.data === 'room not found'){
                 alert('Room not found, ya bumkin')
             } else {
-                console.log(res.data)
+                socket.emit('player-joined', {roomId: this.state.roomId})
+                this.setState({
+                    toWaiting: true
+                })
             }
         })
     }
@@ -41,11 +47,17 @@ class JoinGame extends Component {
         document.getElementById("passive-left").id = 'looking-left'
         document.getElementById("passive-right").id = 'looking-right'
         document.getElementById("closed").id = 'open'
+        this.setState({
+            activeEyes: true
+        })
     }
     passiveEyes(){
         document.getElementById("looking-left").id = 'passive-left'
         document.getElementById("looking-right").id = 'passive-right'
         document.getElementById("open").id = 'closed'
+        this.setState({
+            activeEyes: false
+        })
     }
 
     render(){
@@ -53,12 +65,18 @@ class JoinGame extends Component {
             <div>
                 <h1>Join Game</h1>
                 <div className="alien-area">
+                <div className="antenna-box">
+                <div className="antenna-top-left"></div>
+                <div className="antenna-top-right"></div>
+                <div className="antenna-bottom-left"></div>
+                <div className="antenna-bottom-right"></div>
+                </div>
                     <div className="alien-head">
                         <div className="left-eye">
-                            <div className="left-pupil" id="passive-left" style={{marginLeft:`${this.state.eyes}px`}}></div>
+                            <div className="left-pupil" id="passive-left" style={this.state.activeEyes ? {marginLeft:`${this.state.eyes}px`} : {marginLeft: "0px"}}></div>
                         </div>
                         <div className="right-eye">
-                        <div className="left-pupil" id="passive-right" style={{marginLeft:`${this.state.eyes}px`}}></div>
+                        <div className="left-pupil" id="passive-right" style={this.state.activeEyes ? {marginLeft:`${this.state.eyes}px`} : {marginLeft: "0px"}}></div>
                         </div>
                         <div className="mouth" id="closed">
                         </div>
@@ -69,6 +87,7 @@ class JoinGame extends Component {
                 <h2>Room ID</h2>
                 <input onChange={(e)=>this.handleRoom(e.target.value)} placeholder="Room ID"/>
                 <button onClick={()=>this.joinGame()}>Join Game</button>
+                {this.state.toWaiting ? <Redirect to="/waiting"/> : ''}
             </div>
         )
     }

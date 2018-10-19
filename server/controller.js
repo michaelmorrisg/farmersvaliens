@@ -22,5 +22,12 @@ module.exports = {
                 })
             }
         })
+    }, 
+    getPlayers: (req,res) => {
+        const db = req.app.get('db')
+        db.get_players({roomId: req.params.roomId})
+            .then(response => {
+                res.status(200).send(response)
+            })
     }
 }
