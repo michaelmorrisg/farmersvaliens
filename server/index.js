@@ -48,6 +48,10 @@ io.on('connection', socket => {
     socket.on('player-joined', data => {
         io.in(data.roomId).emit('add-player')
     })
+
+    socket.on('question-sent', data => {
+        io.in(data.roomId).emit('display-options')
+    })
 })
 
 //

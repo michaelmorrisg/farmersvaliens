@@ -3,6 +3,8 @@ import axios from 'axios'
 import io from 'socket.io-client'
 import './JoinGame.css'
 import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {createRoom} from '../../ducks/reducer'
 
 const socket = io.connect("http://localhost:3020")
 
@@ -36,6 +38,7 @@ class JoinGame extends Component {
             if(res.data === 'room not found'){
                 alert('Room not found, ya bumkin')
             } else {
+                this.props.createRoom(this.state.roomId)
                 socket.emit('player-joined', {roomId: this.state.roomId})
                 this.setState({
                     toWaiting: true
@@ -92,4 +95,4 @@ class JoinGame extends Component {
         )
     }
 }
-export default JoinGame
+export default connect(null, {createRoom})(JoinGame)

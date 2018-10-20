@@ -6,13 +6,19 @@ import JoinGame from './Components/JoinGame/JoinGame'
 import HostGame from './Components/HostGame/HostGame'
 import HostingMain from './Components/HostingMain/HostingMain'
 import PlayerWaiting from './Components/PlayerWaiting/PlayerWaiting'
+import MultipleChoice from './Components/MultipleChoice/MultipleChoice';
+import PlayerAnswer from './Components/PlayerAnswer/PlayerAnswer';
+import PlayerPassive from './Components/PlayerPassive/PlayerPassive';
 
 export default(
     <Switch>
         <Route path="/" exact component={WelcomeUser}/>
-        <Route path="/join" exact component={JoinGame}/>
-        <Route path="/host" exact component={HostGame}/>
-        <Route path="/hosting" exact component={HostingMain}/>
-        <Route path="/waiting" exact component={PlayerWaiting}/>
+        <Route path="/join" component={JoinGame}/>
+        <Route path="/host" component={HostGame}/>
+        <Route path="/hosting" component={HostingMain}/>
+        <Route path="/waiting" component={PlayerWaiting}/>
+        <Route path="/multiplechoice" component={MultipleChoice}/>
+        <Route path="/playeranswer" component={PlayerAnswer}/>
+        <Route path="/playerpassive" component={PlayerPassive}/>
     </Switch>
 )
