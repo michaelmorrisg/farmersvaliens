@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import io from 'socket.io-client'
+import {Redirect} from 'react-router-dom'
 
 const socket = io.connect("http://localhost:3020")
 
@@ -9,16 +10,21 @@ class HostingMain extends Component {
     constructor(){
         super()
         this.state = {
-            players: []
+            players: [],
+            toStoryStart: false
         }
 
         socket.on('add-player', ()=>{
-            console.log('im hit!')
             axios.get(`/api/getplayers/${this.props.roomId}`).then(res => {
-                console.log(res.data)
                 this.setState({
                     players: res.data
                 })
+            })
+        })
+
+        socket.on('going-to-player-passive', ()=>{
+            this.setState({
+                toStoryStart: true
             })
         })
     }
@@ -31,13 +37,14 @@ class HostingMain extends Component {
             <div>
                 <h1>Hosting Main</h1>
                 <h2>Room: {this.props.roomId}</h2>
-                {this.state.players.map(player => {
+                {this.state.players.map((player,i) => {
                     return(
                         <div>
-                            <h3>{player.username}</h3>
+                            <h3 key={i}>{player.username}</h3>
                         </div>
                     )
                 })}
+                {this.state.toStoryStart ? <Redirect to="/storystart"/> : ''}
             </div>
         )
     }

@@ -9,6 +9,7 @@ import PlayerWaiting from './Components/PlayerWaiting/PlayerWaiting'
 import MultipleChoice from './Components/MultipleChoice/MultipleChoice';
 import PlayerAnswer from './Components/PlayerAnswer/PlayerAnswer';
 import PlayerPassive from './Components/PlayerPassive/PlayerPassive';
+import StoryStart from './Components/StoryStart/StoryStart';
 
 export default(
     <Switch>
@@ -20,5 +21,6 @@ export default(
         <Route path="/multiplechoice" component={MultipleChoice}/>
         <Route path="/playeranswer" component={PlayerAnswer}/>
         <Route path="/playerpassive" component={PlayerPassive}/>
+        <Route path="/storystart" component={StoryStart}/>
     </Switch>
 )

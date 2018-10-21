@@ -18,6 +18,7 @@ module.exports = {
                 res.status(200).send('room not found')
             } else {
                 db.add_player({roomId:req.body.roomId, username:req.body.username}).then(response => {
+                    console.log(response,'im the response youre looking for')
                     res.status(200).send('user created')
                 })
             }

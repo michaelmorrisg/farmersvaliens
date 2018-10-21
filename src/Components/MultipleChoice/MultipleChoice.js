@@ -45,8 +45,9 @@ class MultipleChoice extends Component {
                 <h1>MultipleChoice</h1>
                 <p>{this.state.question}</p>
                 {this.state.allAnswers.map((answers,i) => {
+                    let numsArr = ['A', 'B', 'C', 'D']
                     return(
-                        <p key={i}>{answers}</p>
+                        <p key={i}>{numsArr[i]}: {answers}</p>
                     )
                 })}
             </div>
