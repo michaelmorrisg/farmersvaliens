@@ -1,0 +1,102 @@
+.WelcomeUser-main {
+    font-family: 'Monofett', cursive;
+    /* background-color: #001a33; */
+    background-image: linear-gradient(#001a33, #14145b);
+    color: white;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.WelcomeUser-main > h1 {
+    font-size: 150px;
+}
+.WelcomeUser-main button {
+    background-color: #001a33;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    margin-top: 50px;
+    font-size: 30px;
+    border-radius: 15px;
+    outline: none;
+}
+.WelcomeUser-main button:hover {
+    background-color: greenyellow;
+    color: black;
+}
+.WelcomeUser-ground {
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    background-color: #011910;
+    bottom: 0;
+}
+
+.house-wrapper {
+    width: 200px;
+    background-color: #14145b;
+    height: 150px;
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    z-index: 2;
+}
+.chimney {
+    width: 20px;
+    height: 30px;
+    background-color: black;
+    position: absolute;
+    right: 20px;
+    top: -20px;
+}
+.roof {
+    border-bottom: 60px solid black;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    height: 0;
+    width: 75%;
+    position: absolute;
+    top: 0;
+    left: -25px;
+}
+
+.main-floor {
+    width: 100%;
+    background-color: black;
+    height: 70%;
+    position: absolute;
+    bottom: 0;
+}
+.left-window {
+    position: absolute;
+    width: 30%;
+    height: 35%;
+    background-color: yellow;
+    top: 25%;
+    left: 7%;
+}
+.kitchen-left {
+    width: 10%;
+    height: 22%;
+    background-color: #FFFF33;
+    position: absolute;
+    top: 25%;
+    right: 18%;
+}
+.kitchen-right {
+    width: 10%;
+    height: 22%;
+    background-color: #FFFF33;
+    position: absolute;
+    top: 25%;
+    right: 5%;
+}
+#dark {
+    background-color: black;
+}
+#dark-side {
+    background-color: black;
+}
+#dark-side2 {
+    background-color: black;
+}
