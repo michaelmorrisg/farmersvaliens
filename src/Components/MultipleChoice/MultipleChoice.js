@@ -3,6 +3,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {addPlayers} from '../../ducks/reducer'
 import io from 'socket.io-client'
+import Timer from '../Timer/Timer'
+import './MultipleChoice.css'
 
 const socket = io.connect("http://localhost:3020")
 
@@ -12,12 +14,14 @@ class MultipleChoice extends Component {
         this.state = {
             question: '',
             correctAnswer: '',
-            allAnswers: []
+            correctAnswerIndex: 0,
+            allAnswers: [],
         }
         socket.on("logging-answer", data => {
+            console.log(typeof data.answer, "data.answer")
             const tempPlayers = this.props.players.map(player => {
                 if(player.username === data.player){
-                    if(data.answer !== this.state.correctAnswer){
+                    if(data.answer !== this.state.correctAnswerIndex){
                         player.initialQuestionRight = false
                     }
                 }
@@ -44,21 +48,22 @@ class MultipleChoice extends Component {
             var editedQuestion = res.data.results[0].question.replace(/&#039;/g,"'")
             editedQuestion = editedQuestion.replace(/&quot;/g,'"')
             editedQuestion = editedQuestion.replace(/&amp;/g,'&')
+            let correctAnswerIndex = tempWrong.indexOf(res.data.results[0].correct_answer)
             this.setState({
                 question: editedQuestion,
                 correctAnswer: res.data.results[0].correct_answer,
-                allAnswers: tempWrong
+                allAnswers: tempWrong,
+                correctAnswerIndex: correctAnswerIndex
             })
-            console.log(this.state.allAnswers)
-            console.log(this.state.correctAnswer)
+
         })
         socket.emit('question-sent', {roomId:this.props.roomId})
     }
 
     render(){
         return(
-            <div>
-                <h1>MultipleChoice</h1>
+            <div className="multiplechoice-main">
+
                 <p>{this.state.question}</p>
                 {this.state.allAnswers.map((answers,i) => {
                     let numsArr = ['A', 'B', 'C', 'D']
@@ -66,6 +71,8 @@ class MultipleChoice extends Component {
                         <p key={i}>{numsArr[i]}: {answers}</p>
                     )
                 })}
+                <p>{this.state.timer}</p>
+                <Timer />
             </div>
         )
     }

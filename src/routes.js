@@ -11,6 +11,7 @@ import PlayerAnswer from './Components/PlayerAnswer/PlayerAnswer';
 import PlayerPassive from './Components/PlayerPassive/PlayerPassive';
 import StoryStart from './Components/StoryStart/StoryStart';
 import HostingQuestionPlayer from './Components/HostingQuestionPlayer/HostingQuestionPlayer'
+import DrawingComponent from './Components/DrawingComponent/DrawingComponent'
 
 export default(
     <Switch>
@@ -23,5 +24,7 @@ export default(
         <Route path="/playeranswer" component={PlayerAnswer}/>
         <Route path="/playerpassive" component={PlayerPassive}/>
         <Route path="/storystart" component={StoryStart}/>
+        <Route path="/drawing" component={DrawingComponent}/>
+
     </Switch>
 )

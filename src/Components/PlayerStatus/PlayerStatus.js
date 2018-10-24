@@ -7,7 +7,7 @@ class PlayerStatus extends Component {
 
     render(){
         return(
-            <div>
+            <div className="playerstatus-main">
                 <h1>Players</h1>
                 {this.props.players.map(player => {
                     return (
