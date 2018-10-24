@@ -67,6 +67,14 @@
     background-color: #3CFF00;
     opacity: .9;
 }
+#house-wrapper-floats {
+    animation-name: houseFloats;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+#corn {
+    width: 40px;
+}
 @keyframes growBeam {
     from {width: 0px; left: 150px; opacity: .5}
     to {width: 250px; left: 30px; opacity: .5}
@@ -84,4 +92,8 @@
     63% {opacity: 0.5}
     64% {opacity: 0.5}
     100% {opacity: 0}
+}
+@keyframes houseFloats {
+    from{bottom:50px}
+    to{bottom: 100%}
 }

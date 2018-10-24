@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {addPlayers} from '../../ducks/reducer'
 import axios from 'axios'
 import io from 'socket.io-client'
 import {Redirect} from 'react-router-dom'
@@ -19,6 +20,11 @@ class HostingMain extends Component {
                 this.setState({
                     players: res.data
                 })
+                //THIS IS THE PLACE TO ADD PLAYER VALUES TO REDUX
+                res.data.forEach(element => {
+                    element.initialQuestionRight = true
+                })
+                this.props.addPlayers(res.data)
             })
         })
 
@@ -53,4 +59,4 @@ function mapStateToProps(state){
     const {roomId} = state
     return {roomId}
 }
-export default connect(mapStateToProps)(HostingMain)
+export default connect(mapStateToProps, {addPlayers})(HostingMain)

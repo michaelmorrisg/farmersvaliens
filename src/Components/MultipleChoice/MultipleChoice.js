@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {addPlayers} from '../../ducks/reducer'
 import io from 'socket.io-client'
 
 const socket = io.connect("http://localhost:3020")
@@ -13,14 +14,27 @@ class MultipleChoice extends Component {
             correctAnswer: '',
             allAnswers: []
         }
+        socket.on("logging-answer", data => {
+            const tempPlayers = this.props.players.map(player => {
+                if(player.username === data.player){
+                    if(data.answer !== this.state.correctAnswer){
+                        player.initialQuestionRight = false
+                    }
+                }
+                return player
+            })
+            this.props.addPlayers(tempPlayers)
+        })
+
     }
 
     componentDidMount(){
+        socket.emit('join-room', {roomId: this.props.roomId})
         axios.get('https://opentdb.com/api.php?amount=1&difficulty=medium&type=multiple')
         .then(res => {
             let tempAnswer = res.data.results[0].correct_answer
             let tempWrong = res.data.results[0].incorrect_answers
-            let randomNum = Math.random(4)
+            let randomNum = Math.floor(Math.random() * Math.floor(4))
             tempWrong.splice(randomNum, 0, tempAnswer)
             tempWrong.forEach(element => {
                 element = element.replace(/&quot;/g,'"')
@@ -35,6 +49,8 @@ class MultipleChoice extends Component {
                 correctAnswer: res.data.results[0].correct_answer,
                 allAnswers: tempWrong
             })
+            console.log(this.state.allAnswers)
+            console.log(this.state.correctAnswer)
         })
         socket.emit('question-sent', {roomId:this.props.roomId})
     }
@@ -55,7 +71,7 @@ class MultipleChoice extends Component {
     }
 }
 function mapStateToProps(state){
-    const {roomId} = state
-    return {roomId}
+    const {roomId, players} = state
+    return {roomId, players}
 }
-export default connect(mapStateToProps)(MultipleChoice)
+export default connect(mapStateToProps, {addPlayers})(MultipleChoice)

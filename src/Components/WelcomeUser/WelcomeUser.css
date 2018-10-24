@@ -100,3 +100,11 @@
 #dark-side2 {
     background-color: black;
 }
+#moon {
+    width: 90px;
+}
+#moon-div {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}

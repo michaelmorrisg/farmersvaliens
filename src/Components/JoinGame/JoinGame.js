@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 import './JoinGame.css'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {createRoom, makeAdmin} from '../../ducks/reducer'
+import {createRoom, makeAdmin, addPlayer} from '../../ducks/reducer'
 
 const socket = io.connect("http://localhost:3020")
 
@@ -43,6 +43,7 @@ class JoinGame extends Component {
                         this.props.makeAdmin(true)
                     }
                     this.props.createRoom(this.state.roomId)
+                    this.props.addPlayer(this.state.username)
                     socket.emit('player-joined', {roomId: this.state.roomId})
                     this.setState({
                         toWaiting: true
@@ -101,4 +102,4 @@ class JoinGame extends Component {
         )
     }
 }
-export default connect(null, {createRoom, makeAdmin})(JoinGame)
+export default connect(null, {createRoom, makeAdmin, addPlayer})(JoinGame)

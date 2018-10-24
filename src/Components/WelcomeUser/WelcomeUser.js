@@ -17,6 +17,9 @@ class WelcomeUser extends Component {
                         <Link to="/join"><button>Join Game</button></Link>
                     </div>
                 </div>
+                <div id="moon-div">
+                    <img id="moon" src={require('../../Assets/Moon.png')}/>
+                </div>
                 <div className="house-wrapper">
                     <div className="chimney"></div>
                     <div className="roof"></div>

@@ -56,6 +56,10 @@ io.on('connection', socket => {
     socket.on('to-player-passive', data => {
         io.in(data.roomId).emit('going-to-player-passive')
     })
+
+    socket.on('player-submitted-answer', data => {
+        io.in(data.roomId).emit('logging-answer', {player: data.player, answer: data.answer})
+    })
 })
 
 //

@@ -10,6 +10,7 @@ import MultipleChoice from './Components/MultipleChoice/MultipleChoice';
 import PlayerAnswer from './Components/PlayerAnswer/PlayerAnswer';
 import PlayerPassive from './Components/PlayerPassive/PlayerPassive';
 import StoryStart from './Components/StoryStart/StoryStart';
+import HostingQuestionPlayer from './Components/HostingQuestionPlayer/HostingQuestionPlayer'
 
 export default(
     <Switch>
@@ -18,7 +19,7 @@ export default(
         <Route path="/host" component={HostGame}/>
         <Route path="/hosting" component={HostingMain}/>
         <Route path="/waiting" component={PlayerWaiting}/>
-        <Route path="/multiplechoice" component={MultipleChoice}/>
+        <Route path="/multiplechoice" component={HostingQuestionPlayer}/>
         <Route path="/playeranswer" component={PlayerAnswer}/>
         <Route path="/playerpassive" component={PlayerPassive}/>
         <Route path="/storystart" component={StoryStart}/>
