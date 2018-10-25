@@ -1,3 +1,16 @@
+.h2-title {
+    font-size: 50px;
+}
+.hostgame-content {
+    padding-top: 30vh;
+    width: 40%;
+    margin: 0px auto;
+}
+.hostgame-content > div {
+    display: flex;
+    margin: 0px auto;
+    width: 90%;
+}
 .initial-beam {
     width: 20px;
     height: 76vh;
@@ -71,9 +84,6 @@
     animation-name: houseFloats;
     animation-duration: 2s;
     animation-fill-mode: forwards;
-}
-#corn {
-    width: 40px;
 }
 @keyframes growBeam {
     from {width: 0px; left: 150px; opacity: .5}

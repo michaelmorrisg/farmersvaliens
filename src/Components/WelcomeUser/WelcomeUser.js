@@ -8,6 +8,7 @@ class WelcomeUser extends Component {
     render(){
         return(
             <div className="WelcomeUser-main">
+            <div>
                 <h1>Abducted</h1>
                 <div className="welcomeuser-content">
                     <div>
@@ -29,7 +30,15 @@ class WelcomeUser extends Component {
                         <div className="kitchen-right" id="kitchen2-on"></div>
                     </div>
                 </div>
+                <div className="corn-main">
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                </div>
                 <div className="WelcomeUser-ground"></div>
+                </div>
             </div>
         )
     }

@@ -1,16 +1,19 @@
 .WelcomeUser-main {
-    font-family: 'Monofett', cursive;
     /* background-color: #001a33; */
     background-image: linear-gradient(#001a33, #14145b);
-    color: white;
+    color: greenyellow;
     height: 100vh;
     width: 100%;
     position: relative;
 }
-.WelcomeUser-main > h1 {
+.WelcomeUser-main > div > h1 {
+    font-family: 'Monofett', cursive;
     font-size: 150px;
+    padding-top: 60px;
+    z-index: 4;
 }
 .WelcomeUser-main button {
+    font-family: 'Orbitron', sans-serif;
     background-color: #001a33;
     border: none;
     color: white;
@@ -19,6 +22,7 @@
     font-size: 30px;
     border-radius: 15px;
     outline: none;
+    z-index: 3;
 }
 .WelcomeUser-main button:hover {
     background-color: greenyellow;
@@ -101,10 +105,31 @@
     background-color: black;
 }
 #moon {
-    width: 90px;
+    width: 120px;
 }
 #moon-div {
     position: absolute;
-    top: 30px;
-    right: 20px;
+    top: 20px;
+    right: 60px;
+}
+.corn-main {
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+    z-index: 3;
+}
+#corn {
+    width: 80px;
+}
+#stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.WelcomeUser-main > div {
+    background-image: url('../../Assets/stars.png');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
 }

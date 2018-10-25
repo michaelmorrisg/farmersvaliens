@@ -61,16 +61,20 @@ class HostGame extends Component {
 
         return(
             <div className="WelcomeUser-main">
+            <div>
                 <div className="initial-beam">
                     <div className="initial-beam-bottom"></div>
                 </div>
                 <div className="beam-main">
                     <div className='beam-bottom'></div>
                 </div>
-                <h1>Host Game</h1>
-                <h2>Enter Room ID</h2>
-                <input onChange={(e)=>this.handleInput(e.target.value)} placeholder="Room ID..." />
-                <button onClick={()=>this.createGame(this.state.roomId)}>Create Game</button>
+                <div className="hostgame-content">
+                    <h2 className="h2-title">Enter Room ID</h2>
+                    <div>
+                        <input onChange={(e)=>this.handleInput(e.target.value)} placeholder="Room ID..." />
+                        <button onClick={()=>this.createGame(this.state.roomId)}>Create Game</button>
+                    </div>
+                </div>
                 {this.state.toHost ? <Redirect to="/hosting"/> : ''}
                 <div id="moon-div">
                     <img id="moon" src={require('../../Assets/Moon.png')}/>
@@ -85,9 +89,16 @@ class HostGame extends Component {
                     </div>
                 </div>
                 <div>
-                    <img id="corn" src={require('../../Assets/corn.png')}/>
+                </div>
+                <div className="corn-main">
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
+                <img id="corn" src={require('../../Assets/corn.png')}/>
                 </div>
                 <div className="WelcomeUser-ground"></div>
+                </div>
             </div>
         )
     }
