@@ -2,14 +2,27 @@
     font-size: 50px;
 }
 .hostgame-content {
-    padding-top: 30vh;
-    width: 40%;
+    padding-top: 20vh;
+    width: 50%;
     margin: 0px auto;
 }
 .hostgame-content > div {
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     margin: 0px auto;
+    margin-top: 50px;
     width: 90%;
+    height: 30px;
+}
+.hostgame-content input {
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
 }
 .initial-beam {
     width: 20px;

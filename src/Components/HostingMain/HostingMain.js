@@ -4,6 +4,7 @@ import {addPlayers} from '../../ducks/reducer'
 import axios from 'axios'
 import io from 'socket.io-client'
 import {Redirect} from 'react-router-dom'
+import "./HostingMain.css"
 
 const socket = io.connect("http://localhost:3020")
 
@@ -51,6 +52,17 @@ class HostingMain extends Component {
                     )
                 })}
                 {this.state.toStoryStart ? <Redirect to="/storystart"/> : ''}
+                <div className="face-wrapper">
+                    <div id="head1">
+                        <div id="leye1">
+                            <div className="pupil"></div>
+                        </div>
+                        <div id="reye1">
+                            <div className="pupil"></div>
+                        </div>
+                        <img id="nose1" src={require('../../Assets/nose1.png')}/>
+                    </div>
+                </div>
             </div>
         )
     }
