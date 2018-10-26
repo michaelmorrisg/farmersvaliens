@@ -1,11 +1,33 @@
 .joingame-main {
     height: 100vh;
     width: 100%;
+    filter: blur(1.5rem);
+    animation-name: unblur;
+    animation-duration: 3s;
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
 }
-.blinky-eyes {
+.blinky-eyes-bottom {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background-color: black;
+    z-index:1;
+    position: absolute;
+    animation-name: open;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+.blinky-eyes-top {
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    z-index:1;
+    position: absolute;
+    bottom: 0;
+    position: absolute;
+    animation-name: open;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
 }
 .alien-area {
     margin: 0px auto;
@@ -110,4 +132,128 @@
     height: 10px;
     border-radius: 50%;
     transition: .3s;
+}
+.tablet-rim {
+    background-color: #303030;
+    width: 100%;
+    margin: 0px auto;
+    height: 100vh;
+}
+.tablet-screen {
+    width: 90%;
+    height: 90vh;
+    margin: 0px auto;
+    background-color: #011910;
+    position: relative;
+    top: 5vh;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.tablet-content {
+   padding-top: 50px;
+}
+.tablet-content h2 {
+    color: greenyellow;
+    padding-top: 30px;
+}
+.tablet-content input {
+    border: none;
+    border-bottom: 2px solid yellowgreen;
+    background: transparent;
+    outline: none;
+    font-family: 'Orbitron', sans-serif;
+    padding-top: 20px;
+    color: greenyellow;
+    font-size: 20px;
+}
+.tablet-content button:hover {
+    border-bottom: 2px solid yellowgreen;
+}
+.tablet-content button {
+    margin-top: 30px;
+    font-family: 'Orbitron', sans-serif;
+    background: transparent;
+    border: none;
+    color: yellowgreen;
+    font-size: 30px;
+    outline: none;
+}
+#streak1 {
+    background-color: lawngreen;
+    width: 70px;
+    height: 5px;
+    filter: blur(.1rem);
+    position: absolute;
+    top: 40px;
+    left: -100px;
+    animation-name: travelLeft;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+#streak2 {
+    background-color: lawngreen;
+    width: 50px;
+    height: 5px;
+    filter: blur(.15rem);
+    position: absolute;
+    top: 400px;
+    left: -100px;
+    animation-name: travelLeft;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    animation-delay: 10s;
+}
+#streak3 {
+    background-color: lawngreen;
+    width: 10px;
+    height: 5px;
+    filter: blur(.1rem);
+    position: absolute;
+    top: 5px;
+    left: -100px;
+    animation-name: travelLeft;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+    animation-delay: 5s;
+}
+#streak4 {
+    background-color: lawngreen;
+    width: 25px;
+    height: 5px;
+    filter: blur(.18rem);
+    position: absolute;
+    top: 501px;
+    left: -100px;
+    animation-name: travelLeft;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-delay: 7s;
+}
+#streak5 {
+    background-color: lawngreen;
+    width: 18px;
+    height: 6px;
+    filter: blur(.14rem);
+    position: absolute;
+    top: 5px;
+    left: -100px;
+    animation-name: travelLeft;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-delay: 10s;
+}
+@keyframes open {
+    0%{height:50vh}
+    20%{height:20vh}
+    30%{height:20vh}
+    60%{height:50vh}
+    100%{height:0vh}
+}
+@keyframes unblur {
+    from{filter:blur(1.5rem)}
+    to{filter:blur(0)}
+}
+@keyframes travelLeft {
+    from{left:-100px}
+    to{left:2000px}
 }
