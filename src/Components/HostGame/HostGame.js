@@ -14,24 +14,35 @@ class HostGame extends Component {
         }
     }
     componentDidMount(){
-        // setTimeout(function(){
-        //     document.getElementById('on').id = "dark"
-        // },1500)
-        // setTimeout(function(){
-        //     document.getElementById('kitchen-on').id = "dark-side"
-        //     document.getElementById('kitchen2-on').id = "dark-side2"
-        // },2000)
-        // setTimeout(function(){
-        //     document.getElementById("chimney-dark").id="chimney-beam"
-        //     document.getElementById("roof-dark").id="roof-beam"
-        //     document.getElementById("main-floor-dark").id="main-floor-beam"
-        //     document.getElementById("dark").id="window-lit1"
-        //     document.getElementById("dark-side").id="window-lit2"
-        //     document.getElementById("dark-side2").id="window-lit3"
-        // },7030)
-        // setTimeout(function(){
-        //     document.getElementById("house-wrapper-stays").id="house-wrapper-floats"
-        // },9000)
+        this.dark1 = setTimeout(()=>{
+            document.getElementById('on').id = "dark"
+        },1500)
+        this.dark2 = setTimeout(()=>{
+            document.getElementById('kitchen-on').id = "dark-side"
+            document.getElementById('kitchen2-on').id = "dark-side2"
+        },2000)
+        this.beam = setTimeout(()=>{
+            document.getElementById("chimney-dark").id="chimney-beam"
+            document.getElementById("roof-dark").id="roof-beam"
+            document.getElementById("main-floor-dark").id="main-floor-beam"
+            document.getElementById("dark").id="window-lit1"
+            document.getElementById("dark-side").id="window-lit2"
+            document.getElementById("dark-side2").id="window-lit3"
+        },7030)
+        this.floating = setTimeout(()=>{
+            document.getElementById("house-wrapper-stays").id="house-wrapper-floats"
+        },9000)
+        this.shrinky = setTimeout(()=>{
+            document.getElementById("changeMe").id="shrinkyBeam"
+            document.getElementById("changeMeToo").id="shrinkyBeamBottom"
+        },8000)
+    }
+    componentWillUnmount(){
+        clearTimeout(this.dark1)
+        clearTimeout(this.dark2)
+        clearTimeout(this.beam)
+        clearTimeout(this.floating)
+        clearTimeout(this.shrinky)
     }
 
     handleInput(input){
@@ -65,8 +76,8 @@ class HostGame extends Component {
                 <div className="initial-beam">
                     <div className="initial-beam-bottom"></div>
                 </div>
-                <div className="beam-main">
-                    <div className='beam-bottom'></div>
+                <div className="beam-main" id="changeMe">
+                    <div className='beam-bottom' id="changeMeToo"></div>
                 </div>
                 <div className="hostgame-content">
                     <h2 className="h2-title">Enter Room ID</h2>

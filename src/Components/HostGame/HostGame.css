@@ -97,6 +97,34 @@
     animation-name: houseFloats;
     animation-duration: 2s;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+#shrinkyBeam {
+    width: 250px;
+    height: 96vh;
+    background-color: #3CFF00;
+    position: absolute;
+    z-index: 3;
+    left: 30px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 0.5;
+    animation-name: shrinkBeam;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+#shrinkyBeamBottom {
+    width: 250px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #3CFF00;
+    left: 0;
+    z-index:2;
+    bottom: -25px;
+    animation-name: shrinkBeamBottom;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 @keyframes growBeam {
     from {width: 0px; left: 150px; opacity: .5}
@@ -106,6 +134,14 @@
     from {width: 0px}
     to {width: 250px}
 }
+@keyframes shrinkBeam {
+    from {width: 250px; left: 30px; opacity: .5}
+    to {width: 0px; left: 150px; opacity: .5}
+}
+@keyframes shrinkBeamBottom {
+    from {width: 250px}
+    to {width: 0px}
+}
 @keyframes flicker {
     0% {opacity: .5}
     30% {opacity: .5}
@@ -114,6 +150,8 @@
     60% {opacity: .5}
     63% {opacity: 0.5}
     64% {opacity: 0.5}
+    68% {opacity: 0.5}
+    69% {opacity: 0.5}
     100% {opacity: 0}
 }
 @keyframes houseFloats {
