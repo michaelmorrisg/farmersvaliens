@@ -34,7 +34,7 @@ class PlayerStatus extends Component {
                 {this.props.players.map(player => {
                     return (
                         <div>
-                            <p className={player.initialQuestionRight && this.state.showStatus ? "green" : "red"}>{player.username}</p>
+                            <p className={player.initialQuestionRight && this.state.showStatus ? "green" : !player.initialQuestionRight && this.state.showStatus ? "red" : "gray"}>{player.username}</p>
                         </div>
                     )
                 })}
