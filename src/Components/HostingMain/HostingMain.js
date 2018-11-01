@@ -39,7 +39,7 @@ class HostingMain extends Component {
         socket.emit('join-room', {roomId: this.props.roomId})
     }
 
-    render(props){
+    render(){
         return(
             <div>
                 <h1>Hosting Main</h1>
