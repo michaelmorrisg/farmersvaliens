@@ -3,3 +3,9 @@
     position: relative;
     height: 80%;
 }
+#question-showing {
+    display: block;
+}
+#question-hidden {
+    display: none;
+}

@@ -23,7 +23,6 @@ componentDidMount(){
                     timer: this.state.timer - 1
                 })
             } else {
-                console.log('emitting')
                 socket.emit('to-player-passive', {roomId: this.props.roomId})
                 this.setState({
                     killInterval: true

@@ -17,7 +17,6 @@ class PlayerStatus extends Component {
             this.setState({
                 showStatus: true
             })
-            console.log('I happened!')
            },5000)
         })
     }

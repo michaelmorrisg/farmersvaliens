@@ -30,6 +30,10 @@ class MultipleChoice extends Component {
             this.props.addPlayers(tempPlayers)
         })
 
+        socket.on('going-to-player-passive', ()=>{
+
+        })
+
     }
 
     componentDidMount(){
@@ -63,7 +67,7 @@ class MultipleChoice extends Component {
     render(){
         return(
             <div className="multiplechoice-main">
-
+                <div className="multiplechoice-question" id="question-showing">
                 <p>{this.state.question}</p>
                 {this.state.allAnswers.map((answers,i) => {
                     let numsArr = ['A', 'B', 'C', 'D']
@@ -71,6 +75,7 @@ class MultipleChoice extends Component {
                         <p key={i}>{numsArr[i]}: {answers}</p>
                     )
                 })}
+                </div>
                 <p>{this.state.timer}</p>
                 <Timer />
             </div>
