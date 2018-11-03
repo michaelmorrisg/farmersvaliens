@@ -9,3 +9,6 @@
 #question-hidden {
     display: none;
 }
+#correct-answer-revealed {
+    color: pink;
+}

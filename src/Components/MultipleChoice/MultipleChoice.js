@@ -18,7 +18,6 @@ class MultipleChoice extends Component {
             allAnswers: [],
         }
         socket.on("logging-answer", data => {
-            console.log(typeof data.answer, "data.answer")
             const tempPlayers = this.props.players.map(player => {
                 if(player.username === data.player){
                     if(data.answer !== this.state.correctAnswerIndex){
@@ -31,7 +30,9 @@ class MultipleChoice extends Component {
         })
 
         socket.on('going-to-player-passive', ()=>{
-
+            setTimeout(()=>{
+                document.getElementById("correct-answer").id = "correct-answer-revealed"
+            },3000)
         })
 
     }
@@ -72,7 +73,7 @@ class MultipleChoice extends Component {
                 {this.state.allAnswers.map((answers,i) => {
                     let numsArr = ['A', 'B', 'C', 'D']
                     return(
-                        <p key={i}>{numsArr[i]}: {answers}</p>
+                        <p key={i} id={i===this.state.correctAnswerIndex ? "correct-answer" : ""}>{numsArr[i]}: {answers}</p>
                     )
                 })}
                 </div>
