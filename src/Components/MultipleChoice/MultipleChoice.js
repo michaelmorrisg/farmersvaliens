@@ -33,6 +33,9 @@ class MultipleChoice extends Component {
             setTimeout(()=>{
                 document.getElementById("correct-answer").id = "correct-answer-revealed"
             },3000)
+            setTimeout(()=>{
+                document.getElementById("question-showing").id = "question-hidden"
+            },7000)
         })
 
     }
